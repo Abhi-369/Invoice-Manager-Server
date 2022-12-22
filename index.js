@@ -11,13 +11,6 @@ app.use(bodyParser.json());
 app.use(cors())
 const PORT = process.env.PORT || 5000
 
-app.get("*", (req, res) => {
-    let url = path.join(__dirname, '../client/build', 'index.html');
-    if (!url.startsWith('/app/')) // we're on local windows
-        url = url.substring(1);
-    res.sendFile(url);
-}); 
-
 mongoose.connect(process.env.CONNECTION_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
