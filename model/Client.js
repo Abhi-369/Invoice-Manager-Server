@@ -17,7 +17,13 @@ const clientSchema = new mongoose.Schema(
         },
         advance: {
             type: Number
-        }
+        },
+        totalAmount: {
+            type: Number
+        },
+        afterDelivery: {
+            type: Number
+        },
     },
     { timestamps: true }
 )
