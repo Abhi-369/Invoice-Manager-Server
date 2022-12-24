@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser';
 import ClientRoute from './routes/Client.js'
+import AuthRoute from './routes/Auth.js'
 import cors from 'cors'
 dotenv.config()
 
@@ -18,6 +19,7 @@ mongoose.connect(process.env.CONNECTION_URL, {
     console.log('db connecerd')
 })
 
+app.use('/api/auth', AuthRoute)
 app.use('/api/client', ClientRoute)
 
 console.log(mongoose.Types)

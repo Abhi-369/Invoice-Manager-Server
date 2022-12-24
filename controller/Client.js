@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import ClientData from '../model/Client.js';
+import dropDown from '../model/dropDown.js';
 
 export const create = async (req, res) => {
     const data = req.body
@@ -61,6 +62,30 @@ export const editInvoice = async (req, res) => {
     console.log("result", afterDelivery)
     try {
         const result = await ClientData.findByIdAndUpdate(id, { afterDelivery: afterDelivery }, { new: true })
+        res.status(200).json(result)
+    } catch (error) {
+        res.status(500).json(error)
+        console.log(error)
+    }
+}
+
+export const createDropDown = async (req, res) => {
+    const { id } = req.params
+    const data = req.body
+    console.log("result", data)
+    try {
+        const result = await dropDown.findOneAndUpdate(id, { $push: data }, { new: true })
+        res.status(200).json(result)
+        console.log("hey", result)
+    } catch (error) {
+        res.status(500).json(error)
+        console.log(error)
+    }
+}
+
+export const getDropDown = async (req, res) => {
+    try {
+        const result = await dropDown.find()
         res.status(200).json(result)
     } catch (error) {
         res.status(500).json(error)
