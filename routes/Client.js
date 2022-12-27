@@ -10,8 +10,4 @@ router.get('/find/:id', getInvoice)
 router.get('/report', getReport)
 router.put('/:id', editInvoice)
 
-router.put('/update/:id', createDropDown)
-router.get('/get/list/dropDown', getDropDown)
-
-
 export default router;
